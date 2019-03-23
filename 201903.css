@@ -24,6 +24,8 @@ ul {
 }
 p {
     margin:0 auto;
+    padding:0 5%;
+    text-align:left;
 }
 .love { /*お気に入りフォト共通*/
     margin:0 auto;
@@ -50,11 +52,14 @@ p {
     background-color: black;
     position: relative;
     margin:0 auto;
+    text-align:center;
+    z-index:-10;
 }
 #frame {
     width:90%;
     height:auto;
     margin:0 auto;
+    text-align:center;
 }
 
 #absolute {
@@ -62,24 +67,32 @@ p {
     position:absolute;
     font-size:30px;
     top:10%;
-    left:10%;
+    left:5%;
     z-index:10;
     display:none;
 }
 #comment {
     color:white;
     position:absolute;
-    font-size:20px;
+    font-size:25px;
     top:60%;
     left:5%;
     z-index:10;
     display:none;
 }
-#starteat {
+.starteat {
     color:white;
     font-size:20px;
+    margin:0 auto;
+    margin-top:20px;
+    opacity:0.0 ;
+}
+.active {
     z-index:10;
-    display:none;
+    opacity:1.0;
+}
+.last-active {
+    z-index:9;
 }
 
 @media(min-width:600px){

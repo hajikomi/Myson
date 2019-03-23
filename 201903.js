@@ -2,7 +2,7 @@ $(function(){
   window.onload = function(){
     var vframe = document.getElementById('vframe');
     var htmlVideo = ""
-    htmlVideo += '<div id="frame"><video id="video" src="./M20190314-01.mp4" controls muted autoplay></video></div>';
+    htmlVideo += '<div id="frame"><video id="video" src="./M20190314-01.mp4" controls  muted autoplay></video></div>';
     vframe.innerHTML = htmlVideo;
     var video = document.getElementById('video');
     video.className='love';
@@ -22,6 +22,8 @@ $(function(){
     secondP.setAttribute('id','comment');
     frame.appendChild(firstP);
     frame.appendChild(secondP);
+
+    
     setTimeout(function(){  
       //video.volume =1;
       $('#absolute').slideDown(3000);
@@ -32,7 +34,6 @@ $(function(){
     var timer = setInterval(function() {
       if(video.readyState > 0) {
          var myTime = video.duration;
-        //video.muted=false;
          console.log(myTime);
          console.log(typeof myTime);
          myTime = myTime * 1000;
@@ -44,33 +45,55 @@ $(function(){
 })
 
 var secondComment = [
-  '初めての麦茶に挑戦。','おっぱいだけの人生は終わりです。','ママがいなくても生きていけるようになるんだ。'
+  '初めての麦茶に挑戦。','おっぱいだけの人生は終わりです。','ママを休ませてあげるんだ。','結構、おいしいかも。'
 ]
 
 function startEat(time){
   var vframe = document.getElementById('vframe');
   var frame = document.getElementById('frame');
   var video = document.getElementById('video');
-  
-  var thirdP = document.createElement('p');
-  thirdP.setAttribute('id','starteat');
-   
-  //console.log(timer);
+       
   setTimeout(function(){
-    vframe.innerHTML = '<div id="frame"><video id="video" src="./M201903-05.mp4" controls muted autoplay></video></div>';
-    vframe.appendChild(thirdP);
+    vframe.innerHTML = '<div id="frame"><video id="video" src="./M201903-05.mp4" controls  muted autoplay></video></div>';
+    var video = document.getElementById('video');
+    
     //var thirdP = document.getElementById('starteat');
-    setTimeout(function(){
-        for (var j=0;j<secondComment.length;j++) {
-          //setTimeout(function(){
-            thirdP.textContent = secondComment[j];
-            //thirdP.style.display='block';
-            console.log(thirdP.textContent);
-            $('#starteat').slideDown(5000);
-          //},6000);
-        }
+    var fragment = document.createDocumentFragment();
+    
+    secondComment.forEach(function(value){
+      var p =document.createElement('p');
+      p.textContent=value;
+      p.className='starteat';
+      fragment.appendChild(p);
+    });
+    vframe.appendChild(fragment);
+    var eat = document.getElementsByClassName('starteat');
+    var i = 0;
+    console.log(eat.length);
+    var setTime = setInterval(function(){
+      slideSwitch();
+      i++;
+      console.log(i);
+      if (i===eat.length){
+        clearInterval(setTime);
+      }
     },10000);
   },time);
+}
+
+function slideSwitch(){
+  var $active = $('.active');
+  if ( $active.length == 0 ) $active = $('#vframe p:last');
+
+  var $next = $active.next()
+  var $next =  $active.next().length ? $active.next()
+  : $('#vframe p:first');
+
+  $active.addClass('last-active');
+  $next.css({opacity:0.0}).addClass('active')
+    .animate({opacity:1.0},5000,function(){
+      $active.removeClass('active last-active');
+    })
 }
 
 
