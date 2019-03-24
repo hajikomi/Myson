@@ -59,7 +59,6 @@ function startEat(time){
     
     //var thirdP = document.getElementById('starteat');
     var fragment = document.createDocumentFragment();
-    
     secondComment.forEach(function(value){
       var p =document.createElement('p');
       p.textContent=value;
@@ -68,17 +67,24 @@ function startEat(time){
     });
     vframe.appendChild(fragment);
     var eat = document.getElementsByClassName('starteat');
+    //eat[0].addclass('active');
     var i = 0;
-    console.log(eat.length);
     var setTime = setInterval(function(){
       slideSwitch();
-      i++;
+      
       console.log(i);
+      console.log(eat.length);
+      i++;
       if (i===eat.length){
         clearInterval(setTime);
       }
     },10000);
   },time);
+
+  function newFunction(i) {
+    i++;
+    return i;
+  }
 }
 
 function slideSwitch(){
@@ -87,7 +93,7 @@ function slideSwitch(){
 
   var $next = $active.next()
   var $next =  $active.next().length ? $active.next()
-  : $('#vframe p:first');
+  :$('#vframe p:first');
 
   $active.addClass('last-active');
   $next.css({opacity:0.0}).addClass('active')
