@@ -21,6 +21,8 @@ ul {
     overflow: hidden;
     position: relative;
     text-align:center;
+    background-color: black;
+    z-index: -10;
 }
 p {
     margin:0 auto;
@@ -62,7 +64,7 @@ p {
     text-align:center;
 }
 
-#absolute {
+#firstP {
     color:white;
     position:absolute;
     font-size:30px;
@@ -71,11 +73,20 @@ p {
     z-index:10;
     display:none;
 }
-#comment {
+#secondP {
     color:white;
     position:absolute;
-    font-size:25px;
-    top:60%;
+    font-size:20px;
+    top:45%;
+    left:5%;
+    z-index:10;
+    display:none;
+}
+#thirdP {
+    color:white;
+    position:absolute;
+    font-size:20px;
+    top:70%;
     left:5%;
     z-index:10;
     display:none;
@@ -95,11 +106,44 @@ p {
     z-index:9;
 }
 
+#slideshow {
+    position: relative;
+}
+.slide {
+    position:absolute;
+    height:500px;
+    top:5%;
+    left:2%;
+    z-index:8;
+    opacity:0.0;
+    background-color: black;
+}
+
+.slide img{
+    margin-top:10%;
+    width:90%;
+    height:auto;
+    display:inline-block;
+    margin-left:auto;
+    margin-right:auto;
+}
+.slide p{
+    margin-top:5%;
+    width:90%;
+    height:auto;
+    color:white;
+    margin-left:auto;
+    margin-right:auto;
+}
+
 @media(min-width:600px){
     #vframe{
         height:800px;
     }
     #frame {
+        width:30%;
+    }
+    .slide img {
         width:30%;
     }
 }
